@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+import pickle
+import requests
+
+r = requests.get('http://www.pythonchallenge.com/pc/def/banner.p')
+grid = pickle.loads(r.text)
+print '\n'.join([''.join([c * n for c, n in row]) for row in grid])

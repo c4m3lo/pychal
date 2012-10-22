@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+import requests
+
+nothing = '12345'
+
+while True:
+    r = requests.get('http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing={}'.format(nothing))
+    print r.text
+    if r.text == 'Yes. Divide by two and keep going.':
+        nothing = unicode(int(nothing) / 2)
+    else:
+        nothing = r.text.partition('and the next nothing is ')[2]
+    if not nothing:
+        break

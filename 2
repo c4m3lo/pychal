@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import requests
+
+r = requests.get('http://www.pythonchallenge.com/pc/def/ocr.html')
+text = r.text.split('<!--')[2].split('-->')[0]
+
+letters = [c for c in set(text) if text.count(c) < 1000]
+
+print letters
+
+print ''.join([c for c in text if c in letters])
